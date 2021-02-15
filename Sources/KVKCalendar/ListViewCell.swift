@@ -35,12 +35,23 @@ final class ListViewCell: UITableViewCell {
         }
     }
     
+    var cellSpaceColor: UIColor = .red
+    var cellSpaceHeight: CGFloat = 8.0
+    
+    private var spaceView: UIView {
+        let spaceView = UIView()
+        spaceView.backgroundColor = cellSpaceColor
+        return spaceView
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(txtLabel)
         contentView.addSubview(dotView)
+        contentView.addSubview(spaceView)
         dotView.translatesAutoresizingMaskIntoConstraints = false
         txtLabel.translatesAutoresizingMaskIntoConstraints = false
+        spaceView.translatesAutoresizingMaskIntoConstraints = false
         
         let leftDot: NSLayoutConstraint
         if #available(iOS 11.0, *) {
@@ -53,8 +64,14 @@ final class ListViewCell: UITableViewCell {
         let heightDot = dotView.heightAnchor.constraint(equalToConstant: 20)
         NSLayoutConstraint.activate([leftDot, centerYDot, widthDot, heightDot])
         
+        let spaceViewLeading = spaceView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0)
+        let spaceViewTrailing = spaceView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0)
+        let spaceViewBottom = spaceView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
+        let spaceViewHeight = spaceView.heightAnchor.constraint(equalToConstant: cellSpaceHeight)
+        NSLayoutConstraint.activate([spaceViewBottom, spaceViewLeading, spaceViewTrailing, spaceViewHeight])
+        
         let topTxt = txtLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15)
-        let bottomTxt = txtLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
+        let bottomTxt = txtLabel.bottomAnchor.constraint(equalTo: spaceView.topAnchor, constant: -15)
         let leftTxt = txtLabel.leftAnchor.constraint(equalTo: dotView.rightAnchor, constant: 10)
         let rightTxt = txtLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -15)
         NSLayoutConstraint.activate([topTxt, bottomTxt, leftTxt, rightTxt])
