@@ -38,17 +38,18 @@ final class ListViewCell: UITableViewCell {
     var cellSpaceColor: UIColor = .red
     var cellSpaceHeight: CGFloat = 8.0
     
-    private var spaceView: UIView {
+    private var spaceView: UIView = {
         let spaceView = UIView()
-        spaceView.backgroundColor = cellSpaceColor
+        spaceView.backgroundColor = .white
         return spaceView
-    }
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(txtLabel)
         contentView.addSubview(dotView)
         contentView.addSubview(spaceView)
+        spaceView.backgroundColor = cellSpaceColor
         dotView.translatesAutoresizingMaskIntoConstraints = false
         txtLabel.translatesAutoresizingMaskIntoConstraints = false
         spaceView.translatesAutoresizingMaskIntoConstraints = false
