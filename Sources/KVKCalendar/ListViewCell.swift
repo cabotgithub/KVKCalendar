@@ -43,8 +43,12 @@ final class ListViewCell: UITableViewCell {
     
     var cellSpaceHeight: CGFloat? {
         didSet{
+            spaceView.translatesAutoresizingMaskIntoConstraints = false
+            let spaceViewLeading = spaceView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0)
+            let spaceViewTrailing = spaceView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0)
+            let spaceViewBottom = spaceView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
             let spaceViewHeight = spaceView.heightAnchor.constraint(equalToConstant: cellSpaceHeight ?? 0)
-            NSLayoutConstraint.activate([spaceViewHeight])
+            NSLayoutConstraint.activate([spaceViewBottom, spaceViewLeading, spaceViewTrailing, spaceViewHeight])
         }
     }
     
