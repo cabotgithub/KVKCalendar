@@ -24,7 +24,8 @@ final class ListViewHeader: UITableViewHeaderFooterView {
     
     var headerBackground: UIColor? {
         didSet {
-            titleLabel.backgroundColor = headerBackground
+            titleLabel.backgroundColor = .clear
+            backgroundColor = headerBackground
         }
     }
     
