@@ -14,6 +14,7 @@ final class DayPhoneCell: DayCell {
             guard let newStyle = phoneStyle else { return }
             
             style = newStyle
+            updateStyling()
         }
     }
     
@@ -38,6 +39,15 @@ final class DayPhoneCell: DayCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(dotView)
 
+        if let radius = style.headerScroll.dotCornersRadius {
+            dotView.setRoundCorners(style.headerScroll.dotCorners, radius: radius)
+        } else {
+            let value = dotView.frame.width / 2
+            dotView.setRoundCorners(style.headerScroll.dotCorners, radius: CGSize(width: value, height: value))
+        }
+    }
+    
+    private func updateStyling() {
         if let radius = style.headerScroll.dotCornersRadius {
             dotView.setRoundCorners(style.headerScroll.dotCorners, radius: radius)
         } else {
