@@ -13,6 +13,7 @@ final class ListViewHeader: UITableViewHeaderFooterView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .medium)
         label.numberOfLines = 0
+        label.backgroundColor = .clear
         return label
     }()
     
@@ -24,8 +25,7 @@ final class ListViewHeader: UITableViewHeaderFooterView {
     
     var headerBackground: UIColor? {
         didSet {
-            titleLabel.backgroundColor = .clear
-            backgroundColor = headerBackground
+        tintColor = headerBackground
         }
     }
     
