@@ -22,6 +22,12 @@ final class ListViewHeader: UITableViewHeaderFooterView {
         }
     }
     
+    var headerBackground: UIColor? {
+        didSet {
+            titleLabel.backgroundColor = headerBackground
+        }
+    }
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         addSubview(titleLabel)

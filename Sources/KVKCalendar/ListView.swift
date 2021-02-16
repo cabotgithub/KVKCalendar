@@ -101,7 +101,7 @@ extension ListView: UITableViewDataSource, UITableViewDelegate {
             return headerView
         } else {
             return tableView.dequeueView { (view: ListViewHeader) in
-                view.backgroundColor = style.headerViewBackgroundColor
+                view.headerBackground = style.headerViewBackgroundColor
                 view.title = params.data.titleOfHeader(section: section)
             }
         }
