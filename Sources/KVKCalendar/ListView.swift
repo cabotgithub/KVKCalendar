@@ -97,9 +97,11 @@ extension ListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let date = params.data.sections[section].date
         if let headerView = params.dataSource?.dequeueListHeader(date: date, tableView: tableView, section: section) {
+            headerView.backgroundColor = style.headerViewBackgroundColor
             return headerView
         } else {
             return tableView.dequeueView { (view: ListViewHeader) in
+                view.backgroundColor = style.headerViewBackgroundColor
                 view.title = params.data.titleOfHeader(section: section)
             }
         }

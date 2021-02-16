@@ -378,6 +378,7 @@ public struct ListViewStyle {
     public var heightHeaderView: CGFloat = 50
     public var backgroundColor: UIColor = .white
     public var cellSpaceColor: UIColor = .white
+    public var headerViewBackgroundColor: UIColor = .white
 }
 
 extension Style {
