@@ -35,8 +35,18 @@ final class ListViewCell: UITableViewCell {
         }
     }
     
-    var cellSpaceColor: UIColor = .red
-    var cellSpaceHeight: CGFloat = 8.0
+    var cellSpaceColor: UIColor? {
+        didSet {
+            spaceView.backgroundColor = cellSpaceColor
+        }
+    }
+    
+    var cellSpaceHeight: CGFloat? {
+        didSet{
+            let spaceViewHeight = spaceView.heightAnchor.constraint(equalToConstant: cellSpaceHeight ?? 0)
+            NSLayoutConstraint.activate([spaceViewHeight])
+        }
+    }
     
     private var spaceView: UIView = {
         let spaceView = UIView()
@@ -68,7 +78,7 @@ final class ListViewCell: UITableViewCell {
         let spaceViewLeading = spaceView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0)
         let spaceViewTrailing = spaceView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 0)
         let spaceViewBottom = spaceView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
-        let spaceViewHeight = spaceView.heightAnchor.constraint(equalToConstant: cellSpaceHeight)
+        let spaceViewHeight = spaceView.heightAnchor.constraint(equalToConstant: cellSpaceHeight ?? 0)
         NSLayoutConstraint.activate([spaceViewBottom, spaceViewLeading, spaceViewTrailing, spaceViewHeight])
         
         let topTxt = txtLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15)
