@@ -377,7 +377,6 @@ public struct ListViewStyle {
     public var fontTitle: UIFont = .systemFont(ofSize: 17)
     public var heightHeaderView: CGFloat = 50
     public var backgroundColor: UIColor = .white
-    public var cellSpacing: CGFloat = 8.0
     public var cellSpaceColor: UIColor = .white
 }
 

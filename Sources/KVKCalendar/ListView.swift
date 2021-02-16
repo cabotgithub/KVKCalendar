@@ -90,7 +90,6 @@ extension ListView: UITableViewDataSource, UITableViewDelegate {
                 cell.txt = event.textForList
                 cell.dotColor = event.color?.value
                 cell.cellSpaceColor = style.cellSpaceColor
-                cell.cellSpaceHeight = style.cellSpacing
             }
         }
     }
