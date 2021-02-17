@@ -35,9 +35,16 @@ final class ListViewCell: UITableViewCell {
         }
     }
     
-    var cellSpaceColor: UIColor? {
-        didSet {
-            spaceView.backgroundColor = cellSpaceColor
+    var cellStyle: ListViewStyle? {
+        didSet{
+            spaceView.backgroundColor = cellStyle?.cellSpaceColor
+            txtLabel.font = cellStyle?.fontBullet
+        }
+    }
+    
+    var textLabelColor: UIColor? {
+        didSet{
+            txtLabel.textColor = textLabelColor
         }
     }
     
@@ -58,7 +65,6 @@ final class ListViewCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubview(txtLabel)
         containerView.addSubview(dotView)
-        spaceView.backgroundColor = cellSpaceColor
         dotView.translatesAutoresizingMaskIntoConstraints = false
         txtLabel.translatesAutoresizingMaskIntoConstraints = false
         spaceView.translatesAutoresizingMaskIntoConstraints = false

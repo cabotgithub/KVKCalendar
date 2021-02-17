@@ -23,9 +23,11 @@ final class ListViewHeader: UITableViewHeaderFooterView {
         }
     }
     
-    var headerBackground: UIColor? {
-        didSet {
-        tintColor = headerBackground
+    var headerStyle: ListViewStyle? {
+        didSet{
+            tintColor = headerStyle?.headerViewBackgroundColor
+            titleLabel.font = headerStyle?.fontTitle
+            titleLabel.textColor = headerStyle?.headerTextColor
         }
     }
     

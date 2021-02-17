@@ -89,7 +89,10 @@ extension ListView: UITableViewDataSource, UITableViewDelegate {
             return tableView.dequeueCell(indexPath: indexPath) { (cell: ListViewCell) in
                 cell.txt = event.textForList
                 cell.dotColor = event.color?.value
-                cell.cellSpaceColor = style.cellSpaceColor
+                cell.cellStyle = style
+                cell.textLabelColor = event.textColor
+                
+                
             }
         }
     }
@@ -97,11 +100,11 @@ extension ListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let date = params.data.sections[section].date
         if let headerView = params.dataSource?.dequeueListHeader(date: date, tableView: tableView, section: section) {
-            headerView.backgroundColor = style.headerViewBackgroundColor
+            headerView.tintColor = style.headerViewBackgroundColor
             return headerView
         } else {
             return tableView.dequeueView { (view: ListViewHeader) in
-                view.headerBackground = style.headerViewBackgroundColor
+                view.headerStyle = style
                 view.title = params.data.titleOfHeader(section: section)
             }
         }
