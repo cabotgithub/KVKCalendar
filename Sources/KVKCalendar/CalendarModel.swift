@@ -106,7 +106,7 @@ public struct Event {
         }
     }
     public var backgroundColor: UIColor = UIColor.systemBlue.withAlphaComponent(0.3)
-    public var textColor: UIColor = .white
+    public var textColor: UIColor = .black
     public var isAllDay: Bool = false
     public var isContainsFile: Bool = false
     public var textForMonth: String = ""
